@@ -2,12 +2,13 @@
 
 import { useState } from "react";
 import { Category } from "./components/Category";
+import { Table } from "./components/Table";
 
 const categories = [
   {
     id: 1,
     name: "Bebidas",
-    className: "text-white bg-blue-700 hover:bg-blue-800",
+    className: "text-white bg-blue-700 hover:bg-red-800",
     subItems: [
       { id: 101, name: "Coca Cola", price: 1.5 },
       { id: 102, name: "Fanta", price: 1.4 },
@@ -47,7 +48,36 @@ const categories = [
       { id: 503, name: "Pollo", price: 4.0 },
       { id: 504, name: "Cordero", price: 6.0 }
     ]
+  },
+  {
+    id: 6,
+    name: "Pescado",
+    className: "bg-purple-700 hover:bg-blue-800",
+    subItems: [
+      { id: 501, name: "Cherne", price: 5.0 },
+      { id: 502, name: "Salmon", price: 4.5 },
+      { id: 503, name: "Abadejo", price: 4.0 },
+      { id: 504, name: "pulpo", price: 7.0 }
+    ]
   }
+];
+
+const Table = [
+  {
+    id: 1,
+    number : 1,
+    comensales : 4,
+},
+{
+  id: 2,
+  number : 2,
+  comensales : 2,
+},
+{
+  id: 3,
+  number : 4,
+  comensales : 4,
+}
 ];
 
 
