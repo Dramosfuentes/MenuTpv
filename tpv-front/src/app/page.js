@@ -1,9 +1,13 @@
 'use client'
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Category } from "./components/Category";
 import { Table } from "./components/Table";
+import { getCategories } from "./services/getCategory";
 
+
+
+/*
 const categories = [
   {
     id: 1,
@@ -61,8 +65,8 @@ const categories = [
     ]
   }
 ];
-
-const Table = [
+*/
+const TableData = [
   {
     id: 1,
     number : 1,
@@ -85,6 +89,19 @@ export default function Home() {
   const [selectedSubItems, setSelectedSubItems] = useState([]);
   const [order, setOrder] = useState([])
   const [showModal, setShowModal] = useState(false);
+  const [categories, setCategories] = useState([])
+
+
+  useEffect(() => {
+
+    function fetchData() {
+      getCategories()
+        .then((data) => setCategories(data.data))
+        .catch(error => console.log("error:", error))
+    }
+
+    fetchData()
+  }, [])
 
   const handleSubItem = (subItem) => {
     setOrder([...order, subItem])
@@ -104,7 +121,7 @@ export default function Home() {
   };
 
   const handleClick = (category) => {
-    setSelectedSubItems(category.subItems)
+    setSelectedSubItems(category['sub_items'])
   }
 
   const totalPrice = order.reduce((acc, item) => acc + item.price, 0);
@@ -117,7 +134,7 @@ export default function Home() {
             <Category
               key={category.id}
               onClick={() => handleClick(category)}
-              className={category.className}
+              className={category.classname}
             >
               {category.name}
             </Category>
